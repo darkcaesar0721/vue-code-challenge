@@ -7,7 +7,7 @@
             Vehicle
           </th>
           <!--<th colspan="3" class="px-3 text-white font-weight-normal">Advertised Price</th>-->
-          <th colspan="3" class="px-3 text-white font-weight-normal">
+          <th colspan="4" class="px-3 text-white font-weight-normal">
             Buckets Price
           </th>
         </tr>
@@ -36,6 +36,7 @@
           <th class="text-center">Discount</th>
           <th class="text-center">Discount&nbsp;Type</th>
           <th class="text-center">Final Price</th>
+          <th class="text-center">Action</th>
         </tr>
       </thead>
       <bid-config-table-loader v-if="!hasOptions" :cols="10" />
@@ -55,6 +56,7 @@
             v-show="!modelHidden(option.year + option.model)"
             :key="option.model + trim.style_id"
             :trim="trim"
+            :option="option"
             :configuration="findConfiguration(trim.style_id)"
             :data-model="option.year + option.model"
             :disabled="disabled"

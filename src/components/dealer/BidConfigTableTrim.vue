@@ -59,6 +59,7 @@
     <td class="trim-bucket-discount-min-price align-middle">
       {{ min_bucket_price }}
     </td>
+    <td></td>
   </tr>
 </template>
 <script>

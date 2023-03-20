@@ -82,6 +82,16 @@
       </label>
     </td>
     <td></td>
+    <td>
+      <action-button
+        :disabled="false"
+        :submitting="false"
+        class="btn-warning submit-button px-5"
+        @click="remove"
+      >
+        Remove
+      </action-button>
+    </td>
   </tr>
 </template>
 
@@ -93,6 +103,7 @@
   import { actor, get } from '@/store/modules/dealer/constants'
   import { createNamespacedHelpers } from 'vuex'
   import { exists } from '@/utilities'
+  import ActionButton from '@/components/ActionButton'
   // Components
   // import BidConfigTableTrim from '@/components/dealer/BidConfigTableTrim'
 
@@ -101,6 +112,7 @@
 
   export default {
     name: 'BidConfigTableModel',
+    components: { ActionButton },
     props: {
       toggled: { type: Boolean, default: false },
       option: { default: [] },
@@ -234,6 +246,9 @@
           value: newConfigValue,
           styles: this.styles
         })
+      },
+      remove() {
+        console.log(this.option)
       }
     }
   }
