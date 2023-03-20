@@ -4,7 +4,7 @@
       <div class="row align-items-center justify-content-between">
         <h4 class="text-muted font-weight-normal m-0">Bid Configuration</h4>
         <action-button
-          :disabled="actionButtonDisabled"
+          :disabled="actionSaveButtonDisabled"
           :submitting="submitting"
           class="btn-success submit-button px-5"
           @click="submit"
@@ -73,7 +73,7 @@
     },
     computed: {
       ...mapState(['bidConfig']),
-      actionButtonDisabled() {
+      actionSaveButtonDisabled() {
         return !exists(this.bidConfig.configurations.updated)
       },
       // In order for a submit to be valid, each config object must have a non-null regular discount value and non-null bucket discount value
