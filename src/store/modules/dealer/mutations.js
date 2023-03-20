@@ -22,7 +22,7 @@ export default {
   },
   [mutator.REMOVE_BID_OPTION](state, option) {
     const unRemovedOptions = state.bidConfig.options.filter(optionObj => {
-      return optionObj.year !== option.year || optionObj.model !== option.model
+      return optionObj.id !== option.id
     })
 
     state.bidConfig.options = unRemovedOptions

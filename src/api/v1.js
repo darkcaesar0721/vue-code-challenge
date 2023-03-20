@@ -26,5 +26,12 @@ export default {
   },
   async postBidConfigs(data) {
     return fetch('post', endpoint('bid/config/index'), data)
+  },
+  /**
+   * Remove option.
+   * @param {int} id
+   */
+  async removeBidOption(id) {
+    return fetch('delete', endpoint(`bid/config/options/${id}`))
   }
 }

@@ -113,10 +113,249 @@
         "ref": "MSRP",
         "value": 222
       }
+    },
+    {
+      "id": 1679329141528,
+      "style_id": "ABC9",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 30
+      }
+    },
+    {
+      "id": 1679329141529,
+      "style_id": "ABC10",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 30
+      }
+    },
+    {
+      "id": 1679329915919,
+      "style_id": "ABC9",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 300
+      }
+    },
+    {
+      "id": 1679329915920,
+      "style_id": "ABC10",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 300
+      }
+    },
+    {
+      "id": 1679329928049,
+      "style_id": "ABC1",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 100
+      }
+    },
+    {
+      "id": 1679329928050,
+      "style_id": "ABC2",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 100
+      }
+    },
+    {
+      "id": 1679329928051,
+      "style_id": "ABC3",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 100
+      }
+    },
+    {
+      "id": 1679329936352,
+      "style_id": "ABC12",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 200
+      }
+    },
+    {
+      "id": 1679329936353,
+      "style_id": "ABC13",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 200
+      }
+    },
+    {
+      "id": 1679330043927,
+      "style_id": "ABC1",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 78
+      }
+    },
+    {
+      "id": 1679330043928,
+      "style_id": "ABC2",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 78
+      }
+    },
+    {
+      "id": 1679330050659,
+      "style_id": "ABC12",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 1
+      }
+    },
+    {
+      "id": 1679330050660,
+      "style_id": "ABC13",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 1
+      }
+    },
+    {
+      "id": 1679331566234,
+      "style_id": "ABC9",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 5000
+      }
+    },
+    {
+      "id": 1679331578324,
+      "style_id": "ABC10",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 60000
+      }
+    },
+    {
+      "id": 1679335211886,
+      "style_id": "ABC9",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 100
+      }
+    },
+    {
+      "id": 1679335211887,
+      "style_id": "ABC10",
+      "listing_discount": {
+        "ref": null,
+        "type": null,
+        "value": null
+      },
+      "bucket_discount": {
+        "type": "%",
+        "ref": "MSRP",
+        "value": 100
+      }
     }
   ],
   "options": [
     {
+      "id": 1,
       "year": 2014,
       "model": "Camry",
       "trims": [
@@ -135,6 +374,7 @@
       ]
     },
     {
+      "id": 2,
       "year": 2014,
       "model": "Corolla",
       "trims": [
@@ -159,6 +399,7 @@
       ]
     },
     {
+      "id": 3,
       "year": 2015,
       "model": "Corolla",
       "trims": [
@@ -183,6 +424,7 @@
       ]
     },
     {
+      "id": 4,
       "year": 2016,
       "model": "Camry",
       "trims": [
@@ -201,6 +443,7 @@
       ]
     },
     {
+      "id": 5,
       "year": 2016,
       "model": "Rav4",
       "trims": [

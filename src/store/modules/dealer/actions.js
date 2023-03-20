@@ -38,6 +38,7 @@ export default {
   async [actor.REMOVE_BID_OPTION]({ commit }, option) {
     try {
       commit(mutator.REMOVE_BID_OPTION, option)
+      await v1.removeBidOption(option.id)
     } catch (e) {
       errorHandler(e)
     }
