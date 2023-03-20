@@ -27,6 +27,21 @@ export default {
 
     state.bidConfig.options = unRemovedOptions
   },
+  [mutator.UPDATE_BID_OPTION_TRIM](state, option, trim) {
+    const updatedOptions = state.bidConfig.options.map(optionObj => {
+      if (optionObj.year === option.year && optionObj.model === option.model) {
+        const newOption = optionObj
+        newOption.trims = newOption.trims.map(trimObj => {
+          return trimObj.style_id === trim.style_id ? trim : trimObj
+        })
+        return newOption
+      } else {
+        return optionObj
+      }
+    })
+
+    state.bidConfig.options = updatedOptions
+  },
   [mutator.SET_BID_CONFIG_ERRORS](state, errors = []) {
     state.bidConfig.errors = [...state.bidConfig.errors, ...errors]
   },

@@ -42,6 +42,13 @@ export default {
       errorHandler(e)
     }
   },
+  async [actor.UPDATE_BID_OPTION_TRIM]({ commit }, option, trim) {
+    try {
+      commit(mutator.UPDATE_BID_OPTION_TRIM, option, trim)
+    } catch (e) {
+      errorHandler(e)
+    }
+  },
   [actor.VALIDATE_BID_CONFIG]({ commit, state }) {
     // Clear old errors
     commit(mutator.CLEAR_BID_CONFIG_ERRORS)

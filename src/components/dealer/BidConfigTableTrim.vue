@@ -1,9 +1,46 @@
 <template>
   <tr>
     <td></td>
-    <td class="align-middle">{{ this.trim.name }}</td>
-    <td class="align-middle">{{ this.msrp_display }}</td>
-    <td class="align-middle">{{ this.invoice_display }}</td>
+    <td class="align-middle" v-if="!isModifyState">{{ this.trim.name }}</td>
+    <td class="align-middle" v-else>
+      <input v-model="name_display" />
+    </td>
+    <td class="align-middle" v-if="!isModifyState">{{ this.msrp_display }}</td>
+    <td class="align-middle" v-else>
+      <label>
+        <currency-input
+          v-model.number="msrp_input"
+          v-bind="{
+            currency: 'USD',
+            precision: 0,
+            distractionFree: true,
+            valueAsInteger: true
+          }"
+          class="trim-bucket-discount-value form-control form-control-sm"
+          placeholder="msrp"
+          :disabled="disabled"
+        />
+      </label>
+    </td>
+    <td class="align-middle" v-if="!isModifyState">
+      {{ this.invoice_display }}
+    </td>
+    <td class="align-middle" v-else>
+      <label>
+        <currency-input
+          v-model.number="invoice_input"
+          v-bind="{
+            currency: 'USD',
+            precision: 0,
+            distractionFree: true,
+            valueAsInteger: true
+          }"
+          class="trim-bucket-discount-value form-control form-control-sm"
+          placeholder="msrp"
+          :disabled="disabled"
+        />
+      </label>
+    </td>
     <!--    <td>-->
     <!--      <label>-->
     <!--        <currency-input-->
@@ -59,16 +96,42 @@
     <td class="trim-bucket-discount-min-price align-middle">
       {{ min_bucket_price }}
     </td>
-    <td></td>
+    <td v-if="!isModifyState">
+      <action-button
+        :disabled="false"
+        :submitting="false"
+        class="btn-primary submit-button px-5"
+        @click="modify"
+      >
+        Modifiy
+      </action-button>
+    </td>
+    <td v-else>
+      <action-button
+        :disabled="false"
+        :submitting="false"
+        class="btn-primary submit-button px-5"
+        @click="update"
+      >
+        Update
+      </action-button>
+    </td>
   </tr>
 </template>
 <script>
   import { exists } from '@/utilities'
   import _currency from 'currency.js'
+  import ActionButton from '@/components/ActionButton'
+  import { actor } from '@/store/modules/dealer/constants'
+  import { createNamespacedHelpers } from 'vuex'
+  const { mapActions } = createNamespacedHelpers('dealer')
 
   export default {
     name: 'BidConfigTableTrim',
+    components: { ActionButton },
     props: {
+      Option: Object,
+      trimIndex: Number,
       trim: Object,
       configuration: Object,
       disabled: {
@@ -77,15 +140,41 @@
       }
     },
     data() {
-      return {}
+      return {
+        isModifyState: false
+      }
     },
     inject: ['buildConfigObject', 'computeMinPrice', 'discountValuesConst'],
     computed: {
+      name_display: {
+        get: function () {
+          return this.trim.name
+        },
+        set: function (newValue) {
+          this.setValue('name', null, newValue)
+        }
+      },
       msrp_display() {
         return _currency(this.trim.msrp, { precision: 0 }).format(true)
       },
+      msrp_input: {
+        get: function () {
+          return parseFloat(this.trim.msrp == null ? 0 : this.trim.msrp)
+        },
+        set: function (newValue) {
+          this.setValue('msrp', null, newValue)
+        }
+      },
       invoice_display() {
         return _currency(this.trim.invoice, { precision: 0 }).format(true)
+      },
+      invoice_input: {
+        get: function () {
+          return parseFloat(this.trim.invoice == null ? 0 : this.trim.invoice)
+        },
+        set: function (newValue) {
+          this.setValue('invoice', null, newValue)
+        }
       },
       listing_discount_type: {
         get: function () {
@@ -136,6 +225,7 @@
     },
     created() {}, // ['trim', 'configuration'],
     methods: {
+      ...mapActions([actor.UPDATE_BID_OPTION_TRIM]),
       getDiscountType(name) {
         const hasValue =
           this.configuration &&
@@ -151,11 +241,14 @@
         return this.configuration[name].value
       },
       setValue(name, type, value) {
-        const newConfigValue = this.buildConfigObject(name, type, value)
-        this.$emit('update-config', {
-          ...newConfigValue,
-          style_id: this.trim.style_id
-        })
+        this.trim[name] = value
+      },
+      modify() {
+        this.isModifyState = true
+      },
+      async update() {
+        this.isModifyState = false
+        await this[actor.UPDATE_BID_OPTION_TRIM](this.option, this.trim)
       }
     }
   }

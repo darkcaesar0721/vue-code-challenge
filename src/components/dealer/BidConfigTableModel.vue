@@ -257,6 +257,9 @@
         // On submit, remove the beforeunload event listener?
         window.removeEventListener('beforeunload', this.onUnload)
         this.remove_submitting = false
+      },
+      async add() {
+        console.log(this.option)
       }
     }
   }
