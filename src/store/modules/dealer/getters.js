@@ -7,15 +7,16 @@ export default {
       getters[get.CURRENT_BID_CONFIG_BY_STYLE_ID](styleID)
     )
   },
-  [get.CURRENT_BID_CONFIG_BY_STYLE_ID]: state => styleID => {
-    return state.bidConfig.configurations.current.find(
-      configuration => configuration.style_id === styleID
-    )
-  },
   [get.UPDATED_BID_CONFIG_BY_STYLE_ID]: state => styleID => {
     return state.bidConfig.configurations.updated.find(
       configuration => configuration.style_id === styleID
     )
+  },
+  [get.CURRENT_BID_CONFIG_BY_STYLE_ID]: state => styleID => {
+    const filteredConfigurations = state.bidConfig.configurations.current.filter(
+      configuration => configuration.style_id === styleID
+    )
+    return filteredConfigurations[filteredConfigurations.length - 1]
   },
   [get.LEAD_BY_ID]: state => id => {
     return state.leads.find(lead => lead.id === id)
