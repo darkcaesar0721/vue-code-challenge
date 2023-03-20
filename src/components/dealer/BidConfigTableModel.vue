@@ -85,7 +85,7 @@
     <td>
       <action-button
         :disabled="false"
-        :submitting="false"
+        :submitting="remove_submitting"
         class="btn-warning submit-button px-5"
         @click="remove"
       >
@@ -125,7 +125,8 @@
         listing_discount_value: null,
         bucket_discount_value: null,
         listing_discount_type_value: '% Off MSRP',
-        bucket_discount_type_value: '% Off MSRP'
+        bucket_discount_type_value: '% Off MSRP',
+        remove_submitting: false
       }
     },
     inject: ['buildConfigObject', 'computeMinPrice', 'discountValuesConst'],
@@ -201,7 +202,10 @@
       }
     },
     methods: {
-      ...mapActions([actor.UPDATE_BID_CONFIG_BY_STYLE_ID]),
+      ...mapActions([
+        actor.UPDATE_BID_CONFIG_BY_STYLE_ID,
+        actor.REMOVE_BID_OPTION
+      ]),
       getDiscountType(name) {
         const hasConfigs = exists(this.configurations)
         const types = this.configurations.map(config => config[name].type)
@@ -247,8 +251,12 @@
           styles: this.styles
         })
       },
-      remove() {
-        console.log(this.option)
+      async remove() {
+        this.remove_submitting = true
+        await this[actor.REMOVE_BID_OPTION](this.option)
+        // On submit, remove the beforeunload event listener?
+        window.removeEventListener('beforeunload', this.onUnload)
+        this.remove_submitting = false
       }
     }
   }

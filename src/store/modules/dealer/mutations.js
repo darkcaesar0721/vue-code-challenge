@@ -20,6 +20,13 @@ export default {
   [mutator.SET_BID_CONFIG_OPTIONS](state, options) {
     state.bidConfig.options = options
   },
+  [mutator.REMOVE_BID_OPTION](state, option) {
+    const unRemovedOptions = state.bidConfig.options.filter(optionObj => {
+      return optionObj.year !== option.year || optionObj.model !== option.model
+    })
+
+    state.bidConfig.options = unRemovedOptions
+  },
   [mutator.SET_BID_CONFIG_ERRORS](state, errors = []) {
     state.bidConfig.errors = [...state.bidConfig.errors, ...errors]
   },

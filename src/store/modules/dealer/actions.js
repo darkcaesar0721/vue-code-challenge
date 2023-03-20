@@ -35,6 +35,13 @@ export default {
       errorHandler(e)
     }
   },
+  async [actor.REMOVE_BID_OPTION]({ commit }, option) {
+    try {
+      commit(mutator.REMOVE_BID_OPTION, option)
+    } catch (e) {
+      errorHandler(e)
+    }
+  },
   [actor.VALIDATE_BID_CONFIG]({ commit, state }) {
     // Clear old errors
     commit(mutator.CLEAR_BID_CONFIG_ERRORS)
